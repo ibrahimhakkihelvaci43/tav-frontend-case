@@ -8,7 +8,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Button: typeof import('./components/Button.vue')['default']
-    copy: typeof import('./components/Dropdown copy.vue')['default']
+    Checkbox: typeof import('./components/Checkbox.vue')['default']
+    copy: typeof import('./components/Input copy.vue')['default']
     Dropdown: typeof import('./components/Dropdown.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Input: typeof import('./components/Input.vue')['default']
