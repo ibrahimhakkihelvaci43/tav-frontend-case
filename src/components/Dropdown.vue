@@ -66,8 +66,8 @@ const onClickItem = (item: Item) => {
 
 <style lang="scss">
 .dropdown {
-  position: relative;
   $a: &;
+  position: relative;
 
   &__top {
     display: flex;

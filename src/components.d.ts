@@ -15,5 +15,6 @@ declare module '@vue/runtime-core' {
     Input: typeof import('./components/Input.vue')['default']
     MenuItem: typeof import('./components/MenuItem.vue')['default']
     Select: typeof import('./components/Select.vue')['default']
+    StatusTag: typeof import('./components/StatusTag.vue')['default']
   }
 }
