@@ -22,7 +22,6 @@ const emit = defineEmits(["onClick"]);
 
 <style lang="less">
 .button-base {
-  background-color: green;
   height: 40px;
   min-width: 123px;
   border-radius: 8px;

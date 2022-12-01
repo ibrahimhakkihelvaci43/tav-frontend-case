@@ -11,5 +11,6 @@ declare module '@vue/runtime-core' {
     copy: typeof import('./components/Input copy.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Input: typeof import('./components/Input.vue')['default']
+    MenuItem: typeof import('./components/MenuItem.vue')['default']
   }
 }
