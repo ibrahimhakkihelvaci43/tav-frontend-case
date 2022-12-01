@@ -8,7 +8,9 @@
     ]"
   >
     <div class="dropdown__top" @click="onClick">
-      <div class="dropdown__top-label">Sort By: Status</div>
+      <div class="dropdown__top-label">
+        {{ title }}
+      </div>
       <Icon
         v-if="!isFormItem"
         :name="expandIcon"
@@ -35,15 +37,11 @@
 <script setup lang="ts">
 import Icon from "../utils/Icon";
 import { ref, computed } from "vue";
-
-interface Item {
-  label: string;
-  value: string;
-}
+import { IDropdownItem } from "../utils/types";
 
 interface Props {
   title: string;
-  items: Item[];
+  items: IDropdownItem[];
   isFormItem?: boolean;
 }
 
@@ -58,7 +56,7 @@ const onClick = () => {
   isOpen.value = !isOpen.value;
 };
 
-const onClickItem = (item: Item) => {
+const onClickItem = (item: IDropdownItem) => {
   isOpen.value = false;
   emit("onClickItem", item);
 };
@@ -76,7 +74,7 @@ const onClickItem = (item: Item) => {
     &-label {
       font-weight: 400;
       font-size: 16px;
-      line-height: 22px;
+      line-height: 21px;
       color: #ffffffd9;
     }
   }
