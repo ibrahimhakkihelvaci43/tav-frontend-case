@@ -6,14 +6,22 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { ProductStatus } from "../utils/types";
+
 interface Props {
-  label: string;
-  type?: "completed" | "pending" | "in-progress";
+  type?: ProductStatus;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   type: "completed",
 });
+
+const label = computed(() =>
+  props.type.replace(/^-*(.)|-+(.)/g, (s, c, d) =>
+    c ? c.toUpperCase() : " " + d.toUpperCase()
+  )
+);
 </script>
 
 <style lang="scss">
