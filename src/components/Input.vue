@@ -28,7 +28,7 @@ const value = computed({
 });
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .input-base {
   width: 100%;
   height: 40px;

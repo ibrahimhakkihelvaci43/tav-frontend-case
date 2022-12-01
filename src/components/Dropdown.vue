@@ -1,8 +1,21 @@
 <template>
-  <div class="dropdown">
+  <div
+    :class="[
+      'dropdown',
+      {
+        'dropdown__form-item': isFormItem,
+      },
+    ]"
+  >
     <div class="dropdown__top" @click="onClick">
       <div class="dropdown__top-label">Sort By: Status</div>
-      <Icon :name="expandIcon" width="18" height="18" fill="#FFFFFF33" />
+      <Icon
+        v-if="!isFormItem"
+        :name="expandIcon"
+        width="18"
+        height="18"
+        fill="#FFFFFF33"
+      />
     </div>
     <div v-if="isOpen" class="dropdown__content">
       <div
@@ -31,6 +44,7 @@ interface Item {
 interface Props {
   title: string;
   items: Item[];
+  isFormItem?: boolean;
 }
 
 defineProps<Props>();
@@ -50,9 +64,10 @@ const onClickItem = (item: Item) => {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .dropdown {
   position: relative;
+  $a: &;
 
   &__top {
     display: flex;
@@ -69,6 +84,7 @@ const onClickItem = (item: Item) => {
   &__content {
     position: absolute;
     top: calc(100% + 10px);
+    left: 0;
     background-color: #090010;
     width: 174px;
     border-radius: 8px;
@@ -88,6 +104,27 @@ const onClickItem = (item: Item) => {
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__form-item {
+    #{$a}__top {
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+
+      &-label {
+        font-size: 14px;
+        color: #ffffff33;
+      }
+    }
+
+    #{$a}__content {
+      width: 100%;
     }
   }
 }

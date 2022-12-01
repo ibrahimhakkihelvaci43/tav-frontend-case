@@ -34,7 +34,7 @@ const count = ref(0);
   </p>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .read-the-docs {
   color: #888;
 

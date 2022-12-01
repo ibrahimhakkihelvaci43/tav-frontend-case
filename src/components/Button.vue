@@ -19,8 +19,8 @@ withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(["onClick"]);
 </script>
-
-<style lang="less">
+ 
+<style lang="scss">
 .button-base {
   height: 40px;
   min-width: 123px;

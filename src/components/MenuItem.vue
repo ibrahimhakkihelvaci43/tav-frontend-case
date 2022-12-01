@@ -64,7 +64,7 @@ const onClickSubItem = (item: SubItem) => {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .menu-item {
   background-color: #090010;
   max-width: 180px;
