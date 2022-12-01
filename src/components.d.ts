@@ -7,6 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    copy: typeof import('./components/HelloWorld copy.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    Input: typeof import('./components/Input.vue')['default']
   }
 }
