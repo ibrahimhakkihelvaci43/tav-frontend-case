@@ -21,6 +21,8 @@ declare module '@vue/runtime-core' {
     Modal: typeof import('./components/Modal.vue')['default']
     ProductItem: typeof import('./components/ProductItem.vue')['default']
     ProductsHeader: typeof import('./components/ProductsHeader.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('./components/Select.vue')['default']
     StatusTag: typeof import('./components/StatusTag.vue')['default']
     TextArea: typeof import('./components/TextArea.vue')['default']
