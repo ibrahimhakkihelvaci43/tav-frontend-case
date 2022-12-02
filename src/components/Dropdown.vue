@@ -8,8 +8,15 @@
     ]"
   >
     <div class="dropdown__top" @click="onClick">
-      <div class="dropdown__top-label">
-        {{ title }}
+      <div
+        :class="[
+          'dropdown__top-label',
+          {
+            'dropdown__top-label--selected': selectedItem,
+          },
+        ]"
+      >
+        {{ selectedItem?.label ?? placeholder }}
       </div>
       <Icon
         v-if="!isFormItem"
@@ -40,7 +47,7 @@ import { ref, computed } from "vue";
 import { IDropdownItem } from "../utils/types";
 
 interface Props {
-  title: string;
+  placeholder?: string;
   items: IDropdownItem[];
   isFormItem?: boolean;
 }
@@ -49,6 +56,7 @@ defineProps<Props>();
 const emit = defineEmits(["onClickItem"]);
 
 const isOpen = ref(false);
+const selectedItem = ref<IDropdownItem>();
 
 const expandIcon = computed(() => (isOpen.value ? "ExpandLess" : "ExpandMore"));
 
@@ -58,6 +66,7 @@ const onClick = () => {
 
 const onClickItem = (item: IDropdownItem) => {
   isOpen.value = false;
+  selectedItem.value = item;
   emit("onClickItem", item);
 };
 </script>
@@ -87,6 +96,7 @@ const onClickItem = (item: IDropdownItem) => {
     width: 174px;
     border-radius: 8px;
     padding: 8px;
+    z-index: 99999;
   }
 
   &__item {
@@ -108,7 +118,7 @@ const onClickItem = (item: IDropdownItem) => {
   &--form-item {
     #{$a}__top {
       height: 40px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.1019607843);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       display: flex;
@@ -118,6 +128,10 @@ const onClickItem = (item: IDropdownItem) => {
       &-label {
         font-size: 14px;
         color: #ffffff33;
+
+        &--selected {
+          color: #fff !important;
+        }
       }
     }
 

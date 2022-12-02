@@ -1,5 +1,12 @@
 <template>
-  <div class="checkbox-group">
+  <div
+    :class="[
+      'checkbox-group',
+      {
+        'checkbox-group--horizontal': horizontal,
+      },
+    ]"
+  >
     <div v-for="(item, index) in options" class="checkbox-group__checkbox-base">
       <input
         v-model="value"
@@ -18,15 +25,16 @@
       </label>
     </div>
   </div>
-</template> 
+</template>
 
 <script setup lang="ts">
-import { ref, VNode, computed } from "vue";
+import { computed } from "vue";
 import { CheckboxOptions } from "../utils/types";
 
 interface Props {
   options: CheckboxOptions;
   value: any;
+  horizontal?: boolean;
 }
 
 const props = defineProps<Props>();
@@ -43,6 +51,11 @@ const value = computed({
 
 <style lang="scss">
 .checkbox-group {
+  &--horizontal {
+    display: flex;
+    gap: 20px;
+  }
+
   &__checkbox-base {
     &__checkbox {
       position: absolute;

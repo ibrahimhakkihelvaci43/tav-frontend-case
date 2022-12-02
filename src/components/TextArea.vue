@@ -26,7 +26,7 @@ const value = computed({
   background-color: #ffffff1a;
   border-radius: 8px;
   padding: 8px;
-  height: 40px;
+  height: 36px;
   outline: none;
   border: none;
   color: #fff;

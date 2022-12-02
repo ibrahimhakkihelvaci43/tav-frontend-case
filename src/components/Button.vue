@@ -1,6 +1,10 @@
 <template>
   <button
-    :class="['button-base', `button-base--${type}`]"
+    :class="[
+      'button-base',
+      `button-base--${type}`,
+      { 'button-base--full-width': fullWidth },
+    ]"
     @click="emit('onClick')"
   >
     {{ label }}
@@ -11,6 +15,7 @@
 interface Props {
   label: string;
   type?: "primary" | "secondary" | "link";
+  fullWidth?: boolean;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -32,8 +37,12 @@ const emit = defineEmits(["onClick"]);
   line-height: 18px;
   padding: 11px;
 
-  &:focus{
+  &:focus {
     outline: none;
+  }
+
+  &--full-width {
+    width: 100%;
   }
 
   &--primary {
