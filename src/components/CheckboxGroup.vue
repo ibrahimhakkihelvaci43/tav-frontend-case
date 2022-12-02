@@ -1,44 +1,104 @@
 <template>
   <div class="checkbox-group">
-    <Checkbox
-      v-for="(item, index) in options"
-      :value="item.value"
-      @onChange="handleChange"
-    >
-      <template v-if="item.label">
-        {{ item.label }}
-      </template>
-      <template v-else-if="item.node">
-        <component :is="item.node" />
-      </template>
-    </Checkbox>
+    <div v-for="(item, index) in options" class="checkbox-group__checkbox-base">
+      <input
+        v-model="value"
+        class="checkbox-group__checkbox-base__checkbox"
+        type="checkbox"
+        :id="item.value"
+        :value="item.value"
+      />
+      <label :for="item.value">
+        <template v-if="item.label">
+          {{ item.label }}
+        </template>
+        <template v-else-if="item.node">
+          <component :is="item.node" />
+        </template>
+      </label>
+    </div>
   </div>
-</template>
+</template> 
 
 <script setup lang="ts">
-import { ref, VNode } from "vue";
+import { ref, VNode, computed } from "vue";
+import { CheckboxOptions } from "../utils/types";
 
 interface Props {
-  options: { label?: string; node?: VNode; value: string }[];
+  options: CheckboxOptions;
+  value: any;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
-const checkList = ref<Array<string>>([]);
 const emit = defineEmits(["update:value"]);
 
-const handleChange = (e: { value: string; checked: boolean }) => {
-  if (e.checked) checkList.value.push(e.value);
-  else checkList.value = checkList.value.filter((item) => item !== e.value);
-
-  emit("update:value", checkList.value);
-};
+const value = computed({
+  get: () => props.value,
+  set: (val) => {
+    emit("update:value", val);
+  },
+});
 </script>
 
 <style lang="scss">
 .checkbox-group {
-  .checkbox-base {
-    margin-bottom: 10px;
+  &__checkbox-base {
+    &__checkbox {
+      position: absolute;
+      opacity: 0;
+
+      & + label {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        line-height: 20px;
+        padding-left: 26px;
+
+        &:before {
+          position: absolute;
+          display: block;
+          left: 0;
+          top: 0;
+          content: "";
+          background: transparent;
+          width: 16px;
+          height: 16px;
+          border-radius: 4px;
+          transition: 200ms ease-in-out all;
+          background-color: #160d1c;
+          border-radius: 2px;
+          border: 1px solid #fff;
+        }
+
+        &:after {
+          position: absolute;
+          display: block;
+          top: 3px;
+          left: 6px;
+          content: "";
+          width: 3px;
+          height: 7px;
+          border-right: 2px solid transparent;
+          border-bottom: 2px solid transparent;
+          transform: rotate(45deg);
+          transition: 200ms ease-in-out all;
+        }
+      }
+
+      &:checked {
+        & + label {
+          &:before {
+            background: #160d1c;
+            box-shadow: none;
+            border: none;
+          }
+          &:after {
+            border-color: white;
+          }
+        }
+      }
+    }
   }
 }
 </style>
