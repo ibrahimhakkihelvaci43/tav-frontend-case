@@ -4,9 +4,10 @@
       v-model="checked"
       class="checkbox-base__checkbox"
       type="checkbox"
-      id="checkbox"
+      :id="value"
+      @change="handleChange"
     />
-    <label for="checkbox">
+    <label :for="value">
       <slot />
     </label>
   </div>
@@ -14,12 +15,20 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+
 const props =
   defineProps<{
-    modelValue: any;
+    modelValue?: any;
+    value: string;
   }>();
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "onChange"]);
+
+const handleChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+
+  emit("onChange", { value: props.value, checked: target.checked });
+};
 
 const checked = computed({
   get: () => props.modelValue,

@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="header__search">
-      <Input v-model:modelValue="value" placeholder="Search" size="small">
+      <Input v-model="value" placeholder="Search" size="small">
         <template #prefix>
           <Icon name="Search" width="14" height="14" fill="#FFFFFF66" />
         </template>
