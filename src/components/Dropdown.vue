@@ -3,7 +3,7 @@
     :class="[
       'dropdown',
       {
-        'dropdown__form-item': isFormItem,
+        'dropdown--form-item': isFormItem,
       },
     ]"
   >
@@ -105,7 +105,7 @@ const onClickItem = (item: IDropdownItem) => {
     }
   }
 
-  &__form-item {
+  &--form-item {
     #{$a}__top {
       height: 40px;
       background: rgba(255, 255, 255, 0.05);

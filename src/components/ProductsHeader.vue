@@ -2,11 +2,7 @@
   <div class="products-header">
     <div class="products-header__content">
       <div class="products-header__count">{{ productCount }} Products</div>
-      <Dropdown
-        title="Sort By: Status"
-        :items="dropdownItems"
-        @onClickItem="handleClickDropdownItem"
-      />
+      <Dropdown v-bind="dropdownProps" @onClickItem="handleClickDropdownItem" />
     </div>
     <div class="products-header__action">
       <Button label="Add new product" @onClick="handleClickButton" />
@@ -25,20 +21,23 @@ defineProps<Props>();
 
 const emit = defineEmits(["onChangeSortType", "onClickAddNewProduct"]);
 
-const dropdownItems = [
-  {
-    label: "In Progress",
-    value: "in-progress",
-  },
-  {
-    label: "Completed",
-    value: "completed",
-  },
-  {
-    label: "Pending",
-    value: "pending",
-  },
-];
+const dropdownProps = {
+  title: "Sort By: Status",
+  items: [
+    {
+      label: "In Progress",
+      value: "in-progress",
+    },
+    {
+      label: "Completed",
+      value: "completed",
+    },
+    {
+      label: "Pending",
+      value: "pending",
+    },
+  ],
+};
 
 const handleClickDropdownItem = (item: IDropdownItem) => {
   emit("onChangeSortType", item);
