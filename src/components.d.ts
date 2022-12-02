@@ -10,7 +10,8 @@ declare module '@vue/runtime-core' {
     Button: typeof import('./components/Button.vue')['default']
     Checkbox: typeof import('./components/Checkbox.vue')['default']
     CheckboxGroup: typeof import('./components/CheckboxGroup.vue')['default']
-    copy: typeof import('./components/ProductsHeader copy.vue')['default']
+    copy: typeof import('./components/Input copy.vue')['default']
+    CreateProductForm: typeof import('./components/CreateProductForm.vue')['default']
     Dropdown: typeof import('./components/Dropdown.vue')['default']
     Filter: typeof import('./components/Filter.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
@@ -22,5 +23,6 @@ declare module '@vue/runtime-core' {
     ProductsHeader: typeof import('./components/ProductsHeader.vue')['default']
     Select: typeof import('./components/Select.vue')['default']
     StatusTag: typeof import('./components/StatusTag.vue')['default']
+    TextArea: typeof import('./components/TextArea.vue')['default']
   }
 }
