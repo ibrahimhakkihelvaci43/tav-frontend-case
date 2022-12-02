@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     CheckboxGroup: typeof import('./components/CheckboxGroup.vue')['default']
     copy: typeof import('./components/ProductsHeader copy.vue')['default']
     Dropdown: typeof import('./components/Dropdown.vue')['default']
+    Filter: typeof import('./components/Filter.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Input: typeof import('./components/Input.vue')['default']
