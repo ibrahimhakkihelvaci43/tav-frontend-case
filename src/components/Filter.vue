@@ -15,7 +15,7 @@ import { computed } from "vue";
 import { CheckboxOptions } from "../types/components.types";
 
 interface Props {
-  key: string;
+  filterKey: string;
   title: string;
   options: CheckboxOptions;
   value: any;
@@ -32,7 +32,7 @@ const value = computed({
 });
 
 const handleClickSelectAll = () => {
-  emit("onClickSelectAll", props.key);
+  emit("onClickSelectAll", props.filterKey);
 };
 </script>
 

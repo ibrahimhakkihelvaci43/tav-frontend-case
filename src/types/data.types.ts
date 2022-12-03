@@ -5,3 +5,8 @@ export interface IProduct {
   status: string;
   tags: Array<string>;
 }
+
+export interface IFilter {
+  tags: Array<string>;
+  status: Array<string>;
+}

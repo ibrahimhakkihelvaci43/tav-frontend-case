@@ -1,24 +1,19 @@
 import { defineStore } from "pinia";
 import { ref, computed, reactive, toRaw } from "vue";
-import { IProduct } from "../types/data.types";
+import { IFilter, IProduct } from "../types/data.types";
 
 export const useProductStore = defineStore("products", () => {
   const productsData = ref<IProduct[]>([]);
+
   const searchStr = ref("");
-  const filters = reactive<{
-    tags: Array<string>;
-    status: Array<string>;
-  }>({
+
+  const filters = reactive<IFilter>({
     tags: [],
     status: [],
   });
 
   const products = computed(() => {
-    const selectedFilters = Object.fromEntries(
-      Object.entries(filters).filter(([key, value]) => value.length > 0)
-    );
-
-    let searchedProducts = productsData.value
+    let filteredProducts = productsData.value
       .filter(
         (item) =>
           item.description.includes(searchStr.value) ||
@@ -35,8 +30,8 @@ export const useProductStore = defineStore("products", () => {
 
         return true;
       });
-    console.log("searchedProducts", searchedProducts);
-    return searchedProducts;
+
+    return filteredProducts;
   });
 
   const addProduct = (product: IProduct) => {
@@ -49,5 +44,16 @@ export const useProductStore = defineStore("products", () => {
     });
   };
 
-  return { filters, products, searchStr, addProduct, deleteProduct };
+  const filterSelectAll = (key: string, options: Array<string>) => {
+    filters[key as keyof IFilter] = options;
+  };
+
+  return {
+    filters,
+    products,
+    searchStr,
+    filterSelectAll,
+    addProduct,
+    deleteProduct,
+  };
 });

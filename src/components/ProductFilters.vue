@@ -1,7 +1,11 @@
 <template>
   <div class="product-filters">
-    <Filter v-bind="statusList" v-model:value="store.filters.status" />
-    <Filter v-bind="tags" v-model:value="store.filters.tags" />
+    <Filter
+      v-for="(item, index) in filters"
+      v-bind="item"
+      v-model:value="store.filters[item.filterKey as keyof IFilter]"
+      @onClickSelectAll="handleClickSelectAll"
+    />
   </div>
 </template>
 
@@ -9,56 +13,66 @@
 import { createVNode } from "vue";
 import StatusTag from "./StatusTag.vue";
 import { useProductStore } from "../stores/products";
+import { IFilter } from "../types/data.types";
 
 const store = useProductStore();
 
-const tags = {
-  key: "tags",
-  title: "Tags",
-  options: [
-    {
-      id: "filter__frontent",
-      label: "Frontend",
-      value: "frontend",
-    },
-    {
-      id: "filter__ux",
-      label: "UX",
-      value: "ux",
-    },
-    {
-      id: "filter__ui",
-      label: "UI",
-      value: "ui",
-    },
-    {
-      id: "filter__bug",
-      label: "Bug",
-      value: "bug",
-    },
-  ],
-};
+const filters = [
+  {
+    filterKey: "status",
+    title: "Status",
+    options: [
+      {
+        id: "filter__in-progress",
+        node: createVNode(StatusTag, { type: "in-progress" }),
+        value: "in-progress",
+      },
+      {
+        id: "filter__completed",
+        node: createVNode(StatusTag, { type: "completed" }),
+        value: "completed",
+      },
+      {
+        id: "filter__pending",
+        node: createVNode(StatusTag, { type: "pending" }),
+        value: "pending",
+      },
+    ],
+  },
+  {
+    filterKey: "tags",
+    title: "Tags",
+    options: [
+      {
+        id: "filter__frontent",
+        label: "Frontend",
+        value: "frontend",
+      },
+      {
+        id: "filter__ux",
+        label: "UX",
+        value: "ux",
+      },
+      {
+        id: "filter__ui",
+        label: "UI",
+        value: "ui",
+      },
+      {
+        id: "filter__bug",
+        label: "Bug",
+        value: "bug",
+      },
+    ],
+  },
+];
 
-const statusList = {
-  key: "status",
-  title: "Status",
-  options: [
-    {
-      id: "filter__in-progress",
-      node: createVNode(StatusTag, { type: "in-progress" }),
-      value: "in-progress",
-    },
-    {
-      id: "filter__completed",
-      node: createVNode(StatusTag, { type: "completed" }),
-      value: "completed",
-    },
-    {
-      id: "filter__pending",
-      node: createVNode(StatusTag, { type: "pending" }),
-      value: "pending",
-    },
-  ],
+const handleClickSelectAll = (key: string) => {
+  const optionList = filters
+    .find((item) => item.filterKey === key)
+    ?.options.map((item) => item.value);
+
+  store.filterSelectAll(key, optionList as Array<string>);
 };
 </script>
 
