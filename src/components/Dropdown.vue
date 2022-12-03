@@ -16,7 +16,12 @@
           },
         ]"
       >
-        {{ selectedItem?.label ?? placeholder }}
+        <template v-if="isFormItem">
+          {{ selectedItem?.label ?? placeholder }}</template
+        >
+        <template v-else>
+          {{ placeholder }} {{ selectedItem?.label }}
+        </template>
       </div>
       <Icon
         v-if="!isFormItem"
@@ -45,7 +50,7 @@
 import Icon from "../utils/Icon";
 import { ref, computed } from "vue";
 import { IDropdownItem } from "../types/components.types";
- 
+
 interface Props {
   placeholder?: string;
   items: IDropdownItem[];

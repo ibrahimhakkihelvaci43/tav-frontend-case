@@ -22,19 +22,19 @@ defineProps<Props>();
 const emit = defineEmits(["onChangeSortType", "onClickAddNewProduct"]);
 
 const dropdownProps = {
-  placeholder: "Sort By: Status",
+  placeholder: "Sort By: ",
   items: [
     {
-      label: "In Progress",
-      value: "in-progress",
+      label: "Name",
+      value: "name",
     },
     {
-      label: "Completed",
-      value: "completed",
+      label: "Description",
+      value: "description",
     },
     {
-      label: "Pending",
-      value: "pending",
+      label: "Status",
+      value: "status",
     },
   ],
 };
