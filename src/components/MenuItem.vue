@@ -11,7 +11,15 @@
       <span class="menu-item__label">{{ title }}</span>
     </div>
     <div v-if="isExpanded" class="menu-item__content">
-      <div v-for="(item, index) in subItems" class="menu-item__sub-item">
+      <div
+        v-for="(item, index) in subItems"
+        :class="[
+          'menu-item__sub-item',
+          {
+            'menu-item__sub-item--active': item.value === activeSubItem,
+          },
+        ]"
+      >
         <div
           :key="index"
           class="menu-item__label"
@@ -21,7 +29,7 @@
         </div>
         <div
           v-if="item.value === activeSubItem"
-          class="menu-item__sub-item-active"
+          class="menu-item__sub-item-dot"
         />
       </div>
     </div>
@@ -31,22 +39,19 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import Icon from "../utils/Icon";
+import { ISubItem } from "../utils/types";
 
 const isExpanded = ref(false);
 const activeSubItem = ref();
 
-interface SubItem {
-  label: string;
-  value: string;
-}
-
 interface Props {
+  parent: string;
   title: string;
   icon: string;
-  subItems: SubItem[];
+  subItems: ISubItem[];
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const expandIcon = computed(() =>
   isExpanded.value ? "ExpandLess" : "ExpandMore"
@@ -58,17 +63,16 @@ const onClick = () => {
   isExpanded.value = !isExpanded.value;
 };
 
-const onClickSubItem = (item: SubItem) => {
+const onClickSubItem = (item: ISubItem) => {
   activeSubItem.value = item.value;
-  emit("onClickSubItem", item);
+  emit("onClickSubItem", { parent: props.parent, route: item.value });
 };
 </script>
 
 <style lang="scss">
 .menu-item {
+  $a: &;
   background-color: #090010;
-  max-width: 180px;
-  margin: 50px;
 
   &__label {
     font-weight: 400;
@@ -94,7 +98,7 @@ const onClickSubItem = (item: SubItem) => {
     border-radius: 8px;
     cursor: pointer;
 
-    &-active {
+    &-dot {
       width: 4px;
       height: 16px;
       background-color: #c6c7f8;
@@ -103,6 +107,14 @@ const onClickSubItem = (item: SubItem) => {
       top: 50%;
       transform: translateY(-50%);
       left: 0;
+    }
+
+    &--active {
+      background: rgba(255, 255, 255, 0.1);
+
+      #{$a}__label {
+        font-weight: 700;
+      }
     }
 
     &:hover {

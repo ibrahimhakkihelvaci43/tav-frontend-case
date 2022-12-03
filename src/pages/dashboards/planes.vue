@@ -1,3 +1,3 @@
 <template>
-  <h2>case-study</h2>
+  <div>planes</div>
 </template>

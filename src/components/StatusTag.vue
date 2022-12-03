@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { ProductStatus } from "../utils/types";
+import { camelCaseToTitle } from "../utils/formatters";
 
 interface Props {
   type?: ProductStatus;
@@ -17,11 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: "completed",
 });
 
-const label = computed(() =>
-  props.type.replace(/^-*(.)|-+(.)/g, (s, c, d) =>
-    c ? c.toUpperCase() : " " + d.toUpperCase()
-  )
-);
+const label = computed(() => camelCaseToTitle(props.type));
 </script>
 
 <style lang="scss">

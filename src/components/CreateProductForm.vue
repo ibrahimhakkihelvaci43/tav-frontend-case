@@ -136,7 +136,7 @@ const handleCancel = () => {
 
 <style lang="scss">
 .create-product-form {
-  width: 388px;
+  width: 100%;
 
   &__content {
     margin-bottom: 49px;
