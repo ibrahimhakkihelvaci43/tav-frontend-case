@@ -12,7 +12,9 @@
     </div>
     <div class="default-layout__content">
       <Header :breadcrumbs="breadcrumbs" />
-      <RouterView />
+      <div class="default-layout__views">
+        <RouterView />
+      </div>
     </div>
   </div>
 </template>
@@ -94,6 +96,10 @@ const handleClickMenuItem = (item: { parent: string; route: string }) => {
       color: #ffffff66;
       margin-bottom: 12px;
     }
+  }
+
+  &__views {
+    padding: 32px 32px 32px 36px;
   }
 }
 </style>

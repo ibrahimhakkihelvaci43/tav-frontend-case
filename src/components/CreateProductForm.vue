@@ -53,9 +53,11 @@
 
 <script setup lang="ts">
 import { reactive, toRaw } from "vue";
-import { IDropdownItem } from "../utils/types";
+import { IDropdownItem } from "../types/components.types";
+import { IProduct } from "../types/data.types";
 
-const createProductModel = reactive({
+const createProductModel = reactive<IProduct>({
+  key: 0,
   name: "",
   description: "",
   status: "",
@@ -123,7 +125,12 @@ const handleSubmit = () => {
   let isValid = checkForm();
 
   if (isValid) {
-    emit("onSubmit", createProductModel);
+    const formData = {
+      ...createProductModel,
+      key: Math.floor(Math.random() * 1000),
+    };
+
+    emit("onSubmit", formData);
   } else {
     alert("Please Fill All Fields");
   }

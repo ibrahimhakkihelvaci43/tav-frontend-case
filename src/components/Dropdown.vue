@@ -44,8 +44,8 @@
 <script setup lang="ts">
 import Icon from "../utils/Icon";
 import { ref, computed } from "vue";
-import { IDropdownItem } from "../utils/types";
-
+import { IDropdownItem } from "../types/components.types";
+ 
 interface Props {
   placeholder?: string;
   items: IDropdownItem[];

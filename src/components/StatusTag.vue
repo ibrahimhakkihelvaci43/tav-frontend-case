@@ -7,11 +7,10 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { ProductStatus } from "../utils/types";
 import { camelCaseToTitle } from "../utils/formatters";
 
 interface Props {
-  type?: ProductStatus;
+  type?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {

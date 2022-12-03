@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { CheckboxOptions } from "../utils/types";
-
+import { computed } from "vue";
+import { CheckboxOptions } from "../types/components.types";
+ 
 interface Props {
   key: string;
   options: CheckboxOptions;

@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { IProduct } from "../utils/types";
+import { IProduct } from "../types/data.types";
 
 const props =
   defineProps<{
@@ -34,10 +34,10 @@ const props =
 
 const emit = defineEmits(["onClickDelete"]);
 
-const { name, description, tags, status } = props.item;
+const { key, name, description, tags, status } = props.item;
 
 const handleClickDelete = () => {
-  emit("onClickDelete");
+  emit("onClickDelete", key);
 };
 </script>
 

@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { IDropdownItem } from "../utils/types";
+import { IDropdownItem } from "../types/components.types";
 
 interface Props {
-  productCount: string;
+  productCount: number;
 }
 
 defineProps<Props>();
@@ -22,7 +22,7 @@ defineProps<Props>();
 const emit = defineEmits(["onChangeSortType", "onClickAddNewProduct"]);
 
 const dropdownProps = {
-  title: "Sort By: Status",
+  placeholder: "Sort By: Status",
   items: [
     {
       label: "In Progress",

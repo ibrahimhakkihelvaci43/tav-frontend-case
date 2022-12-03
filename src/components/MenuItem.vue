@@ -38,8 +38,8 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { ISubItem } from "../types/components.types";
 import Icon from "../utils/Icon";
-import { ISubItem } from "../utils/types";
 
 const isExpanded = ref(false);
 const activeSubItem = ref();

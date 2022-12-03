@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { CheckboxOptions } from "../utils/types";
+import { CheckboxOptions } from "../types/components.types";
 
 interface Props {
   options: CheckboxOptions;

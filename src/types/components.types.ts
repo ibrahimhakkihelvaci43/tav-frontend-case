@@ -11,12 +11,3 @@ export interface ISubItem {
 }
 
 export type CheckboxOptions = { label?: string; node?: VNode; value: string }[];
-
-export type ProductStatus = "completed" | "pending" | "in-progress";
-
-export interface IProduct {
-  name: string;
-  description: string;
-  status: ProductStatus;
-  tags: Array<string>;
-}
