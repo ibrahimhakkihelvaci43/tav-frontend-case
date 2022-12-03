@@ -4,6 +4,7 @@
     <ProductsHeader
       :productCount="productCount"
       @onClickAddNewProduct="openModal"
+      @onChangeSortType="handleChangeSortType"
     />
     <div class="case-study__products">
       <ProductItem
@@ -22,6 +23,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useProductStore } from "../../stores/products";
+import { IDropdownItem } from "../../types/components.types";
 import { IProduct } from "../../types/data.types";
 const store = useProductStore();
 
@@ -36,6 +38,10 @@ const onSubmitForm = (formData: IProduct) => {
 
 const handleDeleteProduct = (key: number) => {
   store.deleteProduct(key);
+};
+
+const handleChangeSortType = (item: IDropdownItem) => {
+  store.sortBy = item.value;
 };
 
 const openModal = () => {

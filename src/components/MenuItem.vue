@@ -37,21 +37,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { ISubItem } from "../types/components.types";
 import Icon from "../utils/Icon";
-
-const isExpanded = ref(false);
-const activeSubItem = ref();
 
 interface Props {
   parent: string;
   title: string;
   icon: string;
   subItems: ISubItem[];
+  breadcrumbs: Array<string>;
 }
 
 const props = defineProps<Props>();
+
+const isExpanded = ref(false);
+const activeSubItem = ref(props.breadcrumbs[1] || null);
 
 const expandIcon = computed(() =>
   isExpanded.value ? "ExpandLess" : "ExpandMore"
@@ -67,6 +68,10 @@ const onClickSubItem = (item: ISubItem) => {
   activeSubItem.value = item.value;
   emit("onClickSubItem", { parent: props.parent, route: item.value });
 };
+
+onMounted(() => {
+  if (props.breadcrumbs[0] === props.parent) isExpanded.value = true;
+});
 </script>
 
 <style lang="scss">

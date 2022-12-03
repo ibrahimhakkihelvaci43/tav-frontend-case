@@ -5,7 +5,9 @@
       <div class="default-layout__links">
         <div class="default-layout__links-label">Pages</div>
         <MenuItem
-          v-bind="menuItemProps"
+          v-for="(item, index) in menuItemProps"
+          v-bind="item" 
+          :breadcrumbs="breadcrumbs"
           @onClickSubItem="handleClickMenuItem"
         />
       </div>
@@ -34,29 +36,31 @@ const store = useProductStore();
 const router = useRouter();
 const route = useRoute();
 
-const menuItemProps = {
-  parent: "dashboards",
-  title: "Dashboards",
-  icon: "AccountBox",
-  subItems: [
-    {
-      label: "Aviation",
-      value: "aviation",
-    },
-    {
-      label: "Case Study",
-      value: "case-study",
-    },
-    {
-      label: "Planes",
-      value: "planes",
-    },
-    {
-      label: "Ground Handling",
-      value: "ground-handling",
-    },
-  ],
-};
+const menuItemProps = [
+  {
+    parent: "dashboards",
+    title: "Dashboards",
+    icon: "AccountBox",
+    subItems: [
+      {
+        label: "Aviation",
+        value: "aviation",
+      },
+      {
+        label: "Case Study",
+        value: "case-study",
+      },
+      {
+        label: "Planes",
+        value: "planes",
+      },
+      {
+        label: "Ground Handling",
+        value: "ground-handling",
+      },
+    ],
+  },
+];
 
 const breadcrumbs = computed(() => route.path.split("/").filter(Boolean));
 
