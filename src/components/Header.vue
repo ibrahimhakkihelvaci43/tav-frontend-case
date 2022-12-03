@@ -10,7 +10,7 @@
           },
         ]"
       >
-        {{ item }}
+        {{ camelCaseToTitle(item) }}
         <span
           v-if="index !== breadcrumbs.length - 1"
           class="header__breadcrumb-seperator"
@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import Icon from "../utils/Icon";
+import { camelCaseToTitle } from "../utils/formatters";
 
 interface Props {
   searchStr: any;

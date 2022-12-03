@@ -68,14 +68,17 @@ const emit = defineEmits(["onSubmit", "onClickCancel"]);
 
 const statusList = [
   {
+    id: "create__in-progress",
     label: "In Progress",
     value: "in-progress",
   },
   {
+    id: "create__completed",
     label: "Completed",
     value: "completed",
   },
   {
+    id: "create__pending",
     label: "Pending",
     value: "pending",
   },
@@ -83,18 +86,22 @@ const statusList = [
 
 const tags = [
   {
+    id: "create__frontend",
     label: "Frontend",
     value: "frontend",
   },
   {
+    id: "create__ux",
     label: "UX",
     value: "ux",
   },
   {
+    id: "create__ui",
     label: "UI",
     value: "ui",
   },
   {
+    id: "create__bug",
     label: "Bug",
     value: "bug",
   },

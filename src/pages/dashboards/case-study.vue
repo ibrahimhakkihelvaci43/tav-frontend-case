@@ -3,7 +3,7 @@
     <div class="case-study__title">Our Products</div>
     <ProductsHeader
       :productCount="productCount"
-      @onClickAddNewProduct="handleClickAddNewProduct"
+      @onClickAddNewProduct="openModal"
     />
     <div class="case-study__products">
       <ProductItem
@@ -15,35 +15,35 @@
     </div>
   </div>
   <Modal title="Add New Product" v-model:visible="isVisibleModal">
-    <CreateProductForm @onSubmit="onSubmitForm" @onClickCancel="onHideModal" />
+    <CreateProductForm @onSubmit="onSubmitForm" @onClickCancel="hideModal" />
   </Modal>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useCounterStore } from "../../stores/products";
+import { useProductStore } from "../../stores/products";
 import { IProduct } from "../../types/data.types";
-const store = useCounterStore();
+const store = useProductStore();
 
 const isVisibleModal = ref(false);
 
-const handleClickAddNewProduct = () => {
-  isVisibleModal.value = true;
-};
-
 const productCount = computed(() => store.products.length);
-
-const onHideModal = () => {
-  isVisibleModal.value = false;
-};
 
 const onSubmitForm = (formData: IProduct) => {
   store.addProduct(formData);
-  isVisibleModal.value = false;
+  hideModal();
 };
 
 const handleDeleteProduct = (key: number) => {
   store.deleteProduct(key);
+};
+
+const openModal = () => {
+  isVisibleModal.value = true;
+};
+
+const hideModal = () => {
+  isVisibleModal.value = false;
 };
 </script>
 

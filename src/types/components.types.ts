@@ -10,4 +10,9 @@ export interface ISubItem {
   value: string;
 }
 
-export type CheckboxOptions = { label?: string; node?: VNode; value: string }[];
+export type CheckboxOptions = {
+  id: string;
+  label?: string;
+  node?: VNode;
+  value: string;
+}[];

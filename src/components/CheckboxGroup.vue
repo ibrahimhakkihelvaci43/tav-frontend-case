@@ -9,13 +9,13 @@
   >
     <div v-for="(item, index) in options" class="checkbox-group__checkbox-base">
       <input
-        v-model="value"
         class="checkbox-group__checkbox-base__checkbox"
         type="checkbox"
-        :id="item.value"
+        v-model="value"
         :value="item.value"
+        :id="item.id"
       />
-      <label :for="item.value">
+      <label :for="item.id">
         <template v-if="item.label">
           {{ item.label }}
         </template>
@@ -57,6 +57,7 @@ const value = computed({
   }
 
   &__checkbox-base {
+    position: relative;
     &__checkbox {
       position: absolute;
       opacity: 0;

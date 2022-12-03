@@ -1,7 +1,7 @@
 <template>
   <div class="filter">
     <div class="filter__top">
-      <div class="filter__top-title">Status</div>
+      <div class="filter__top-title">{{ title }}</div>
       <Button label="Select All" type="link" @onClick="handleClickSelectAll" />
     </div>
     <div class="filter__content">
@@ -13,20 +13,21 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { CheckboxOptions } from "../types/components.types";
- 
+
 interface Props {
   key: string;
+  title: string;
   options: CheckboxOptions;
-  modelValue: any;
+  value: any;
 }
 
 const props = defineProps<Props>();
-const emit = defineEmits(["update:modelValue", "onClickSelectAll"]);
+const emit = defineEmits(["update:value", "onClickSelectAll"]);
 
 const value = computed({
-  get: () => props.modelValue,
+  get: () => props.value,
   set: (val) => {
-    emit("update:modelValue", val);
+    emit("update:value", val);
   },
 });
 

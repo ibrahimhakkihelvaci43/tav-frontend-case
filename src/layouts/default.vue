@@ -9,9 +9,15 @@
           @onClickSubItem="handleClickMenuItem"
         />
       </div>
+
+      <div class="default-layout__filters">
+        <ProductFilters
+          v-if="breadcrumbs[breadcrumbs.length - 1] === 'case-study'"
+        />
+      </div>
     </div>
     <div class="default-layout__content">
-      <Header :breadcrumbs="breadcrumbs" />
+      <Header v-model:searchStr="store.searchStr" :breadcrumbs="breadcrumbs" />
       <div class="default-layout__views">
         <RouterView />
       </div>
@@ -22,8 +28,9 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from "vue-router";
 import { computed } from "vue";
-import { camelCaseToTitle } from "../utils/formatters";
+import { useProductStore } from "../stores/products";
 
+const store = useProductStore();
 const router = useRouter();
 const route = useRoute();
 
@@ -51,12 +58,7 @@ const menuItemProps = {
   ],
 };
 
-const breadcrumbs = computed(() =>
-  route.path
-    .split("/")
-    .filter(Boolean)
-    .map((item) => camelCaseToTitle(item))
-);
+const breadcrumbs = computed(() => route.path.split("/").filter(Boolean));
 
 const handleClickMenuItem = (item: { parent: string; route: string }) => {
   router.push(`/${item.parent}/${item.route}`);
@@ -100,6 +102,10 @@ const handleClickMenuItem = (item: { parent: string; route: string }) => {
 
   &__views {
     padding: 32px 32px 32px 36px;
+  }
+
+  &__filters {
+    margin-top: 24px;
   }
 }
 </style>
