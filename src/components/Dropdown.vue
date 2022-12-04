@@ -116,15 +116,15 @@ const onClickItem = (item: IDropdownItem) => {
     }
 
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: #ffffff1a;
     }
   }
 
   &--form-item {
     #{$a}__top {
       height: 40px;
-      background: rgba(255, 255, 255, 0.1019607843);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #ffffff1a;
+      border: 1px solid #ffffff1a;
       border-radius: 8px;
       display: flex;
       align-items: center;

@@ -57,7 +57,7 @@ const value = computed({
 <style lang="scss">
 .header {
   min-height: 73px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #ffffff1a;
   padding: 24px 31px 20px 36px;
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@ const value = computed({
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: rgba(255, 255, 255, 0.4);
+    color: #ffffff66;
     cursor: pointer;
 
     &--active {

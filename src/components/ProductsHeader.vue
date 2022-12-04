@@ -50,8 +50,8 @@ const handleClickButton = () => {
 
 <style lang="scss">
 .products-header {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #ffffff0d;
+  border: 1px solid #ffffff0d;
   border-radius: 16px;
   padding: 13px 16px 14px 24px;
   display: flex;

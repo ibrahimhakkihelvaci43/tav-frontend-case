@@ -30,6 +30,6 @@ const value = computed({
   outline: none;
   border: none;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff1a;
 }
 </style>

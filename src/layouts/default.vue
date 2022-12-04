@@ -6,7 +6,7 @@
         <div class="default-layout__links-label">Pages</div>
         <MenuItem
           v-for="(item, index) in menuItemProps"
-          v-bind="item" 
+          v-bind="item"
           :breadcrumbs="breadcrumbs"
           @onClickSubItem="handleClickMenuItem"
         />
@@ -77,7 +77,7 @@ const handleClickMenuItem = (item: { parent: string; route: string }) => {
   &__sidebar {
     width: 212px;
     height: 100%;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid #ffffff1a;
     padding: 21px 16px 21px 16px;
   }
 

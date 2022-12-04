@@ -82,7 +82,7 @@ onMounted(() => {
   &__label {
     font-weight: 400;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffffcc;
   }
 
   &__top {
@@ -115,7 +115,7 @@ onMounted(() => {
     }
 
     &--active {
-      background: rgba(255, 255, 255, 0.1);
+      background: #ffffff1a;
 
       #{$a}__label {
         font-weight: 700;
@@ -123,7 +123,7 @@ onMounted(() => {
     }
 
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: #ffffff1a;
     }
   }
 

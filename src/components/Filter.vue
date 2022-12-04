@@ -50,7 +50,7 @@ const handleClickSelectAll = () => {
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      color: rgba(255, 255, 255, 0.4);
+      color: #ffffff66;
     }
   }
 

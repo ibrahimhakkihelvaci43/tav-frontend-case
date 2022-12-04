@@ -47,7 +47,7 @@ const onClose = () => {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #00000080;
 
   &__title {
     font-weight: 600;
@@ -60,7 +60,7 @@ const onClose = () => {
     width: 445px;
     position: relative;
     background: #160d1c;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid #ffffff0d;
     border-radius: 16px;
     padding: 24px 32px 32px 24px;
   }

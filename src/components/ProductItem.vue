@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { IProduct } from "../types/data.types";
-import { camelCaseToTitle } from '../utils/formatters'
+import { camelCaseToTitle } from "../utils/formatters";
 
 const props =
   defineProps<{
@@ -45,8 +45,8 @@ const handleClickDelete = () => {
 <style lang="scss">
 .product-item {
   padding: 22px 16px 22px 22px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #ffffff0d;
+  border: 1px solid #ffffff0d;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -76,8 +76,8 @@ const handleClickDelete = () => {
     margin-left: 20px;
 
     &-item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #ffffff0d;
+      border: 1px solid #ffffff0d;
       border-radius: 4px;
       padding: 2px 8px;
       margin-right: 8px;
@@ -90,7 +90,7 @@ const handleClickDelete = () => {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    color: rgba(255, 255, 255, 0.65);
+    color: #ffffff0d;
   }
 }
 </style>

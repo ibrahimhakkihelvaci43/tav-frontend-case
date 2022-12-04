@@ -48,13 +48,13 @@ const emit = defineEmits(["onClick"]);
   &--primary {
     background-color: #c6c7f8;
     color: #1c1c1c;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #0000001a;
   }
 
   &--secondary {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #ffffff1a;
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffffff1a;
   }
 
   &--link {
