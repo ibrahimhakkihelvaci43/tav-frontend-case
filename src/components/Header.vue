@@ -19,7 +19,12 @@
       </div>
     </div>
     <div class="header__search">
-      <Input v-model="value" placeholder="Search" size="small">
+      <Input
+        v-if="breadcrumbs.length !== 0"
+        v-model="value"
+        placeholder="Search"
+        size="small"
+      >
         <template #prefix>
           <Icon name="Search" width="14" height="14" fill="#FFFFFF66" />
         </template>
@@ -47,16 +52,11 @@ const value = computed({
     emit("update:searchStr", val);
   },
 });
-
-/** const searchStr = ref(""); const breadcrumbs = ["Dashboard", "Case Study"];
-
-<Header v-model:searchStr="searchStr" :breadcrumbs="breadcrumbs" />
-<div>search: {{ searchStr }}</div>
-*/
 </script>
 
 <style lang="scss">
 .header {
+  min-height: 73px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 24px 31px 20px 36px;
   display: flex;

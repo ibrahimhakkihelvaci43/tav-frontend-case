@@ -1,3 +1,4 @@
 <template>
-  <h2>index</h2>
+  <h2>Welcome !</h2>
+  <h2>Select a page from sidebar</h2>
 </template>

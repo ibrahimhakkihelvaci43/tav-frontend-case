@@ -23,6 +23,7 @@ export const useProductStore = defineStore("products", () => {
     let filteredProducts = productsData.value
       .filter((item) => item.name.includes(searchStr.value))
       .filter((item) => {
+        // can be more dynamic
         if (filters.status.length > 0 && !filters.status.includes(item.status))
           return false;
         if (

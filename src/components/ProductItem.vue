@@ -12,7 +12,7 @@
             :key="index"
             class="product-item__tags-item"
           >
-            {{ item }}
+            {{ camelCaseToTitle(item) }}
           </div>
         </div>
       </div>
@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { IProduct } from "../types/data.types";
+import { camelCaseToTitle } from '../utils/formatters'
 
 const props =
   defineProps<{
