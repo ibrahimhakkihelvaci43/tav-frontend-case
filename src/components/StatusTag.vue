@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { camelCaseToTitle } from "../utils/formatters";
+import { kebabCaseToTitle } from "../utils/formatters";
 
 interface Props {
   type?: string;
@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: "completed",
 });
 
-const label = computed(() => camelCaseToTitle(props.type));
+const label = computed(() => kebabCaseToTitle(props.type));
 </script>
 
 <style lang="scss">
