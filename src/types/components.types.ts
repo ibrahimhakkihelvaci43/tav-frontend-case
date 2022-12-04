@@ -1,11 +1,6 @@
 import { VNode } from "vue";
 
-export interface IDropdownItem {
-  label: string;
-  value: string;
-}
-
-export interface ISubItem {
+export interface IListItem {
   label: string;
   value: string;
 }

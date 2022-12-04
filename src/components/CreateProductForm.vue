@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { reactive, toRaw } from "vue";
-import { IDropdownItem } from "../types/components.types";
+import { IListItem } from "../types/components.types";
 import { IProduct } from "../types/data.types";
 
 const createProductModel = reactive<IProduct>({
@@ -107,7 +107,7 @@ const tags = [
   },
 ];
 
-const handleClickDropdownItem = (item: IDropdownItem) => {
+const handleClickDropdownItem = (item: IListItem) => {
   createProductModel.status = item.value;
 };
 

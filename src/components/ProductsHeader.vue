@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { IDropdownItem } from "../types/components.types";
+import { IListItem } from "../types/components.types";
 
 interface Props {
   productCount: number;
@@ -39,7 +39,7 @@ const dropdownProps = {
   ],
 };
 
-const handleClickDropdownItem = (item: IDropdownItem) => {
+const handleClickDropdownItem = (item: IListItem) => {
   emit("onChangeSortType", item);
 };
 

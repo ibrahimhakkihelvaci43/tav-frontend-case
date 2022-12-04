@@ -38,14 +38,14 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import { ISubItem } from "../types/components.types";
+import { IListItem } from "../types/components.types";
 import Icon from "../utils/Icon";
 
 interface Props {
   parent: string;
   title: string;
   icon: string;
-  subItems: ISubItem[];
+  subItems: IListItem[];
   breadcrumbs: Array<string>;
 }
 
@@ -64,7 +64,7 @@ const onClick = () => {
   isExpanded.value = !isExpanded.value;
 };
 
-const onClickSubItem = (item: ISubItem) => {
+const onClickSubItem = (item: IListItem) => {
   activeSubItem.value = item.value;
   emit("onClickSubItem", { parent: props.parent, route: item.value });
 };

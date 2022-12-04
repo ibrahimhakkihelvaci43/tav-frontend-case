@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useProductStore } from "../../stores/products";
-import { IDropdownItem } from "../../types/components.types";
+import { IListItem } from "../../types/components.types";
 import { IProduct } from "../../types/data.types";
 const store = useProductStore();
 
@@ -40,7 +40,7 @@ const handleDeleteProduct = (key: number) => {
   store.deleteProduct(key);
 };
 
-const handleChangeSortType = (item: IDropdownItem) => {
+const handleChangeSortType = (item: IListItem) => {
   store.sortBy = item.value;
 };
 

@@ -50,11 +50,11 @@
 <script setup lang="ts">
 import Icon from "../utils/Icon";
 import { ref, computed } from "vue";
-import { IDropdownItem } from "../types/components.types";
+import { IListItem } from "../types/components.types";
 
 interface Props {
   placeholder?: string;
-  items: IDropdownItem[];
+  items: IListItem[];
   isFormItem?: boolean;
 }
 
@@ -62,7 +62,7 @@ defineProps<Props>();
 const emit = defineEmits(["onClickItem"]);
 
 const isOpen = ref(false);
-const selectedItem = ref<IDropdownItem>();
+const selectedItem = ref<IListItem>();
 
 const expandIcon = computed(() => (isOpen.value ? "ExpandLess" : "ExpandMore"));
 
@@ -70,7 +70,7 @@ const onClick = () => {
   isOpen.value = !isOpen.value;
 };
 
-const onClickItem = (item: IDropdownItem) => {
+const onClickItem = (item: IListItem) => {
   selectedItem.value = item;
   emit("onClickItem", item);
   onClose();
