@@ -90,7 +90,7 @@ const handleClickDelete = () => {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    color: #ffffff0d;
+    color: #ffffffa6;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="visible" class="modal">
-    <div class="modal__content">
+    <div class="modal__content" v-click-outside="onClose">
       <div class="modal__title">
         {{ title }}
       </div>

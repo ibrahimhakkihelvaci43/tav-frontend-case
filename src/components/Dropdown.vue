@@ -1,5 +1,6 @@
 <template>
   <div
+    v-click-outside="onClose"
     :class="[
       'dropdown',
       {
@@ -70,9 +71,13 @@ const onClick = () => {
 };
 
 const onClickItem = (item: IDropdownItem) => {
-  isOpen.value = false;
   selectedItem.value = item;
   emit("onClickItem", item);
+  onClose();
+};
+
+const onClose = () => {
+  isOpen.value = false;
 };
 </script>
 
