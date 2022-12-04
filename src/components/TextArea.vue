@@ -23,10 +23,12 @@ const value = computed({
 <style lang="scss">
 .textarea-base {
   width: 100%;
+  max-width: 100%;
+  max-height: 100px;
   background-color: #ffffff1a;
   border-radius: 8px;
-  padding: 8px;
-  height: 36px;
+  padding: 11px;
+  height: 40px;
   outline: none;
   border: none;
   color: #fff;

@@ -12,7 +12,7 @@ export const useProductStore = defineStore("products", () => {
   const productsData = ref<IProduct[]>([]);
 
   const searchStr = ref("");
-  const sortBy = ref(null);
+  const sortBy = ref("");
 
   const filters = reactive<IFilter>({
     tags: [],
@@ -35,7 +35,7 @@ export const useProductStore = defineStore("products", () => {
         return true;
       });
 
-    if (sortBy.value) {
+    if (!!sortBy.value) {
       if (sortBy.value === "status") {
         filteredProducts.sort((a, b) => status[a.status] - status[b.status]);
       } else {
